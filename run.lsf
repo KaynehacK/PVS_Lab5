@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#BSUB -J cuda_integral_job
+#BSUB -o cuda_integral_output.%J.out
+#BSUB -e cuda_integral_error.%J.err 
+
+#BSUB -R "rusage[ngpus_excl_p=1]"   # Запрос 1 GPU в эксклюзивном режиме (старый синтаксис)
+
+#BSUB -n 1                     
+#BSUB -W 00:05  
+
+module load cuda/11.4
+./integral_cuda_cluster
